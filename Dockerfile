@@ -2,7 +2,7 @@
 # STEP 1 build executable binary
 ############################
 
-FROM alpine:latest as builder
+FROM alpine:3.20.5 as builder
 
 RUN apk add --no-cache \
     gcc \
@@ -50,7 +50,7 @@ RUN cmake -DBUILD_TEST=${build_test} \
 ## STEP 2 build a small image
 #############################
 
-FROM alpine:latest
+FROM alpine:3.20.5
 
 LABEL Description="vzlogger"
 
@@ -85,6 +85,6 @@ RUN vzlogger --version
 
 USER root
 #CMD ["vzlogger", "--foreground"]
-#CMD ["/bin/bash"]
+#CMD ["/bin/sh"]
 #CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf", "--log", "/var/log/vzlogger/vzlogger.log", "-v", "10"]
 CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf", "--log", "/var/log/vzlogger/vzlogger.log"]
