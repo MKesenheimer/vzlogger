@@ -56,6 +56,7 @@ LABEL Description="vzlogger"
 
 RUN apk add --no-cache \
     libcurl \
+    curl \
     gnutls \
     libsasl \
     libuuid \
@@ -87,4 +88,5 @@ USER root
 #CMD ["vzlogger", "--foreground"]
 #CMD ["/bin/sh"]
 #CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf", "--log", "/var/log/vzlogger/vzlogger.log", "-v", "10"]
-CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf", "--log", "/var/log/vzlogger/vzlogger.log"]
+#CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf", "--log", "/var/log/vzlogger/vzlogger.log"]
+CMD ["vzlogger", "--foreground", "--config", "/cfg/vzlogger.conf"]
